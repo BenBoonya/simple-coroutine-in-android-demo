@@ -31,10 +31,18 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'com.google.android.material:material:1.0.0'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
 
-    implementation "io.ktor:ktor-client:1.0.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1"
-    implementation "io.ktor:ktor-client-json:1.0.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.9.0"
+    // Network
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.1.1"
+
+    //Di
+    implementation "org.koin:koin-androidx-scope:2.0.1"
+    implementation "org.koin:koin-androidx-viewmodel:2.0.1"
+    implementation "org.koin:koin-androidx-ext:2.0.1"
 }

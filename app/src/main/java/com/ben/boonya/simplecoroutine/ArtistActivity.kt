@@ -11,8 +11,7 @@ import org.koin.core.qualifier.named
 
 class ArtistActivity : AppCompatActivity() {
 
-    private val artistScope = getKoin().createScope("artistScope", named("ARTIST_SCOPE"))
-    private val viewModel: ArtistViewModel by artistScope.viewModel(this)
+    private val viewModel: ArtistViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

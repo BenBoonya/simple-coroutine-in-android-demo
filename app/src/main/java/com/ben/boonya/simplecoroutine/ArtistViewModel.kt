@@ -2,25 +2,19 @@ package com.ben.boonya.simplecoroutine
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ben.boonya.simplecoroutine.model.Artist
 import com.ben.boonya.simplecoroutine.model.ArtistApi
 import com.ben.boonya.simplecoroutine.model.ResponseWrapper
 import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
 
 class ArtistViewModel(
     private val getArtistsUseCase: GetArtistsUseCase
-) : ViewModel(), CoroutineScope {
-
-    private val job = Job()
-
+) : ViewModel() {
     val artistsLiveData: MutableLiveData<List<Artist>> = MutableLiveData()
 
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Main
-
     fun getArtist() {
-        launch {
+        viewModelScope.launch {
             val artistResponse: ResponseWrapper<ArtistApi>? = withContext(Dispatchers.IO) {
                 getArtistsUseCase("Slayer")
             }
@@ -29,10 +23,5 @@ class ArtistViewModel(
                 Artist(it.name, it.genreName)
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        job.cancel()
     }
 }
